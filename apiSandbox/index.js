@@ -1,5 +1,8 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
+app.use(bodyParser.json({ type: 'application/json' }));
 
 module.exports = app;
 
@@ -14,16 +17,16 @@ oneCallRouter.get('/send', function(req, res) {
 
 // A GET to the root of a resource returns that resource
 oneCallRouter.get('/send/:id', function(req, res) {
-  return res.json({ msg: ['OneCall Sent' + req.params.id] });
+  return res.json({ msg: ['OneCall Sent ' + req.params.id] });
 });
 
 // Numbers
-oneCallRouter.post('/number/:num', function(req, res) {
-  return res.json({ msg: ['OneCall Sent' + req.params.id] });
+oneCallRouter.post('/number', function(req, res) {
+  return res.json({ msg: ['OneCall Number Add ' + req.body.num] });
 });
 
-oneCallRouter.delete('/number/:num', function(req, res) {
-  return res.json({ msg: ['OneCall Sent' + req.params.id] });
+oneCallRouter.delete('/number', function(req, res) {
+  return res.json({ msg: ['OneCall Number Delete ' + req.body.num] });
 });
 
 // Messages

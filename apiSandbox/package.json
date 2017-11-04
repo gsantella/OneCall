@@ -1,0 +1,9 @@
+{
+  "name": "one-call-api",
+  "version": "1.0.0",
+  "description": "one-call-api",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
