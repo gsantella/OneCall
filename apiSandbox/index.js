@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-const { execFile } = require('child_process');
+var childProcess = require('child_process');
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
@@ -21,7 +21,7 @@ oneCallRouter.get('/send/:id', function(req, res) {
 
   var result = '';
 
-  const child = execFile('/app/OneCall/scriptsSandbox/call.sh', [''], (error, stdout, stderr) => {
+  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call.sh', [''], (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
