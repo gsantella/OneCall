@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var exec = require('exec');
+var { execFile } = require('child_process');
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
@@ -18,18 +18,22 @@ oneCallRouter.get('/send', function(req, res) {
 
 // A GET to the root of a resource returns that resource
 oneCallRouter.get('/send/:id', function(req, res) {
-  return res.json({ msg: ['OneCall Sent ' + req.params.id] });
+
+  var result = '';
+
+  const child = execFile('/app/OneCall/scriptsSandbox/call.sh', [''], (error, stdout, stderr) => {
+    if (error) {
+      throw error;
+    }
+    console.log(stdout);
+    result = stdout;
+  });
+
+  return res.json({ msg: ['OneCall Sent ' + req.params.id], 'result': result });
 });
 
 // Numbers
 oneCallRouter.post('/number', function(req, res) {
-  exec('/app/OneCall/scriptsSandbox/call.sh', function (error, stdout, stderr) {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    if (error !== null) {
-      console.log('exec error: ' + error);
-    }
-  });
   return res.json({ msg: ['OneCall Number Add ' + req.body.num] });
 });
 
