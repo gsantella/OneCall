@@ -22,6 +22,13 @@ oneCallRouter.get('/send/:id', function(req, res) {
 
 // Numbers
 oneCallRouter.post('/number', function(req, res) {
+  exec('/app/OneCall/scriptsSandbox/call.sh', function (error, stdout, stderr) {
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    }
+  });
   return res.json({ msg: ['OneCall Number Add ' + req.body.num] });
 });
 
