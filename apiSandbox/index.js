@@ -19,17 +19,14 @@ oneCallRouter.get('/send', function(req, res) {
 // A GET to the root of a resource returns that resource
 oneCallRouter.get('/send/:id', function(req, res) {
 
-  var result = '76876786';
-
   const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call.sh', [''], (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
     console.log(stdout);
-    result = stdout;
+    return res.json({ msg: ['OneCall Sent ' + req.params.id], 'result': stdout });
   });
 
-  return res.json({ msg: ['OneCall Sent ' + req.params.id], 'result': result });
 });
 
 // Numbers
