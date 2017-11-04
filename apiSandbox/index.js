@@ -7,8 +7,8 @@ module.exports = app;
 var oneCallRouter = express.Router();
 
 // A GET to the root of a resource returns a list of that resource
-oneCallRouter.get('/', function(req, res) {
-  return res.json({ errors: ['Could not retrieve photo'] });
+oneCallRouter.get('/send', function(req, res) {
+  return res.json({ msg: ['OneCall Sent'] });
 });
 
 app.use('/onecall', oneCallRouter);
