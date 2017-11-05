@@ -18,18 +18,12 @@ var app = new Vue({
     addNewTodo: function () {
 
       axios.get('http://172.17.24.52/onecall/number/add/' + this.newTodoText)
-    .then(function (response) {
-      alert(response);
-      app.$data.numbers = response;
-    })
-    .catch(function (error) {
-      alert('axios error');
-    });
-      this.numbers.push({
-        id: this.nextTodoId++,
-        title: this.newTodoText
+      .then(function (response) {
+        loadNumbers();
       })
-      this.newTodoText = ''
+      .catch(function (error) {
+        alert('axios error');
+      });
     },
     makeCall: function() {
       alert('one call sent');
