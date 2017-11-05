@@ -47,11 +47,8 @@ var app = new Vue({
       this.newTodoText = ''
     },
     makeCall: function() {
-      axios.get('http://172.17.24.52/onecall/send', {
-        params: {
-          id: 1
-        }
-      })
+      alert('one call sent');
+      axios.get('http://172.17.24.52/onecall/1')
     .then(function (response) {
       // say one call sent
     })
@@ -67,7 +64,8 @@ var app = new Vue({
     loadNumbers: function() {
       axios.get('http://172.17.24.52/onecall/number')
       .then(function (response) {
-      app.$data.numbers[0] = response;
+      app.$data.numbers = response;
+      alert('loaded numbers');
       })
       .catch(function (error) {
       alert('axios error');
