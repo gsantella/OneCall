@@ -53,11 +53,13 @@ oneCallRouter.get('/number', function(req, res) {
     number.id = counter++;
     number.title = line;
     output.numbers.push(number);
+
+    if (last) {
+      return res.json(output);
+    }
+
   });
 
-  console.log('output.numbers: ' + output.numbers);
-  console.log('output.numbers[0]: ' + output.numbers[0].title);
-  return res.json(output);
 });
 
 oneCallRouter.post('/number', function(req, res) {
