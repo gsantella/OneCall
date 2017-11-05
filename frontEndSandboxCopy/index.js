@@ -11,8 +11,8 @@ var app = new Vue({
   el: '#todo-list-example',
   data: {
     newTodoText: '',
-    numbers: "",
-    nextTodoId: 4
+    numbers: '',
+    nextTodoId: 0
   },
   methods: {
     addNewTodo: function () {
@@ -48,11 +48,22 @@ var app = new Vue({
         console.log(app.$data.numbers[0]);
 
     },
+    deleteNumber: function (title) {
+      axios.delete('http://172.17.24.52/onecall/number', {
+        num: title
+      })
+      .then(function (response) {
+        alert(response);
+      })
+      .catch(function (error) {
+        alert('axios error');
+      });
+    },
     loadNumbers: function() {
       axios.get('http://172.17.24.52/onecall/number')
       .then(function (response) {
       app.$data.numbers = response.data.numbers;
-      alert('loaded numbers');
+      app.$data.nextTodoId = response.data.numbers.length + 1;
       })
       .catch(function (error) {
       alert('axios error');

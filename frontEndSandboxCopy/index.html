@@ -35,7 +35,7 @@
                   v-for="(number, index) in numbers"
                   v-bind:key="number.id"
                   v-bind:title="number.title"
-                  v-on:remove="numbers.splice(index, 1)"
+                  v-on:remove="deleteNumber(number.title); numbers.splice(index, 1)"
                 ></li>
               </ul>
             </div>
