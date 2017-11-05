@@ -45,6 +45,9 @@ new Vue({
     .catch(function (error) {
       alert('axios error');
     });
+  },
+    addNumber: function () {
+
     }
   }
 })
