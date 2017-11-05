@@ -7,7 +7,7 @@ Vue.component('todo-item', {
   ',
   props: ['title']
 })
-new Vue({
+var app = new Vue({
   el: '#todo-list-example',
   data: {
     newTodoText: '',
@@ -29,7 +29,17 @@ new Vue({
   },
   methods: {
     addNewTodo: function () {
-      alert('before add...');
+
+      axios.post('http://172.17.24.52/onecall/number', {
+        num: this.newToDoText;
+      })
+    .then(function (response) {
+      alert(response);
+      app.$data.numbers[0] = response;
+    })
+    .catch(function (error) {
+      alert('axios error');
+    });
       this.numbers.push({
         id: this.nextTodoId++,
         title: this.newTodoText
@@ -37,17 +47,32 @@ new Vue({
       this.newTodoText = ''
     },
     makeCall: function() {
-      axios.get('http://172.17.24.52/onecall/number')
+      axios.get('http://172.17.24.52/onecall/send', {
+        params: {
+          id: 1
+        }
+      })
     .then(function (response) {
-      alert(response);
-      data.numbers = response;
+      // say one call sent
     })
     .catch(function (error) {
       alert('axios error');
     });
   },
     addNumber: function () {
-
+      console.log(app.$data.numbers[0]);
     }
+  },
+  loadNumbers: function() {
+    axios.get('http://172.17.24.52/onecall/number')
+    .then(function (response) {
+    app.$data.numbers[0] = response;
+    })
+    .catch(function (error) {
+    alert('axios error');
+    });
   }
 })
+
+
+app.loadNumbers();

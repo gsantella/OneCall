@@ -14,7 +14,7 @@ body {
 }
 
 .phoneList {
-  height: 400px;
+  height: 360px;
   width: 500px;
   margin: 10px auto;
   overflow-y: auto;
@@ -37,8 +37,16 @@ ul {
   float: right;
 }
 
-.search {
+.search, .addNumber {
   margin: 0px auto;
   margin-top: 35px;
   width: 250px;
+}
+
+.addNumber {
+  margin-top: 0;
+}
+
+.collection-item {
+  margin: 5px;
 }
