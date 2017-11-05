@@ -51,7 +51,7 @@ var app = new Vue({
     deleteNumber: function (num) {
       var number = {};
       number.num = num;
-      axios.delete('http://172.17.24.52/onecall/number', number.)
+      axios.delete('http://172.17.24.52/onecall/number', number)
       .then(function (response) {
 
       })
