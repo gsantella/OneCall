@@ -43,7 +43,15 @@ oneCallRouter.post('/number', function(req, res) {
 });
 
 oneCallRouter.delete('/number', function(req, res) {
-  return res.json({ msg: ['OneCall Number Delete ' + req.body.num] });
+
+  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-del-num.sh', '12345', (error, stdout, stderr) => {
+    if (error) {
+      throw error;
+    }
+    console.log(stdout);
+    return res.json({ msg: ['OneCall Number Delete ' + req.body.num], 'result': stdout });
+  });
+
 });
 
 // Messages
