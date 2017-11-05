@@ -21,11 +21,12 @@ var app = new Vue({
       .then(function (response) {
 
       })
-      .catch(function (error) {
+        .catch(function (error) {
         alert('axios error');
 
-      app.loadNumbers();
-      this.newTodoText = '';
+        app.loadNumbers();
+        this.newTodoText = '';
+      })
     },
     makeCall: function() {
       alert('one call sent');
