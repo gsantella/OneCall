@@ -35,7 +35,11 @@ oneCallRouter.get('/send/:id', function(req, res) {
 oneCallRouter.get('/number', function(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  var output = { numbers: [] };
+  var output = { numbers: [
+    { "id": "1", "title": "1111111111" },
+    { "id": "1", "title": "222222222222" },
+    { "id": "1", "title": "33333333333" }
+  ] };
 
   lineReader.eachLine('/app/OneCall/config/numbers.txt', function(line, last) {
     output.numbers.push({ "id": "1", "title": "1111111111" })
