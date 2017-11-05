@@ -46,6 +46,7 @@ oneCallRouter.get('/number', function(req, res) {
 
   var counter = 1;
   var number = {};
+  output.numbers = [];
 
   lineReader.eachLine('/app/OneCall/config/numbers.txt', function(line, last) {
 
