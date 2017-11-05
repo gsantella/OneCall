@@ -12,7 +12,7 @@ var app = new Vue({
   data: {
     newTodoText: '',
     numbers: "",
-    nextTodoId: 4
+    nextTodoId: 0
   },
   methods: {
     addNewTodo: function () {
@@ -52,6 +52,7 @@ var app = new Vue({
       axios.get('http://172.17.24.52/onecall/number')
       .then(function (response) {
       app.$data.numbers = response.data.numbers;
+      app.$data.nextTodoId = response.data.numbers.length + 1;
       alert('loaded numbers');
       })
       .catch(function (error) {
