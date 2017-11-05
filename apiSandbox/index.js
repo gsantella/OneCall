@@ -31,6 +31,7 @@ oneCallRouter.get('/send/:id', function(req, res) {
 
 // Numbers
 oneCallRouter.get('/number', function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   return res.json({ numbers: [
     { id: 1, title: 8149379223 },
     { id: 2, title: 7247714542 },
