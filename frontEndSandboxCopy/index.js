@@ -64,7 +64,7 @@ var app = new Vue({
     loadNumbers: function() {
       axios.get('http://172.17.24.52/onecall/number')
       .then(function (response) {
-      app.$data.numbers = response;
+      app.$data.numbers = response.data.numbers;
       alert('loaded numbers');
       })
       .catch(function (error) {
