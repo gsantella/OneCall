@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>OneCall</title>
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+
+    <div id="app">
+
+      <div class="header">
+        <span>O</span><sub class="restOfWord">ne</sub><span>C</span><sub class="restOfWord">all</sub>
+      </div>
+
+      <div class="container">
+
+          <div class="phoneList">
+            <ul class="collection list">
+            <!--  <li v-for="item in numbers" class="collection-item"><div><button v-on:click="deleteNumber" class="waves-effect waves-light btn">X</button><span class="secondary-content">{{item.number}}</span></div></li> -->
+            </ul>
+          </div>
+
+          <div class="input-field search">
+            <input value="" id="numberToSearch" type="text" class="validate">
+            <label class="active" for="numberToSearch">Search for a number</label>
+          </div>
+
+        <button  v-on:click="makeCall" class="waves-effect waves-light btn bottomBtn leftBtn">Call all</button>
+
+        <button  v-on:click="addNumber" class="waves-effect waves-light btn bottomBtn rightBtn">Add a number</button>
+
+      </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
