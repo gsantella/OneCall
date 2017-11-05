@@ -74,4 +74,4 @@ var app = new Vue({
 
 
 
-//app.loadNumbers();
+app.loadNumbers();
