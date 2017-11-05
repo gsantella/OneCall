@@ -32,7 +32,7 @@ oneCallRouter.get('/send/:id', function(req, res) {
 // Numbers
 oneCallRouter.post('/number', function(req, res) {
 
-  cconst child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-add-num.sh', ['12345'], (error, stdout, stderr) => {
+  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-add-num.sh', ['12345'], (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
