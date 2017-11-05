@@ -24,10 +24,10 @@ var app = new Vue({
         .catch(function (error) {
         alert('axios error');
 
-        app.loadNumbers();
-        this.newTodoText = '';
-      })
-    },
+      app.loadNumbers();
+      this.newTodoText = '';
+    })
+  },
     makeCall: function() {
       alert('one call sent');
       axios.get('http://172.17.24.52/onecall/send/1')
