@@ -17,7 +17,7 @@ var app = new Vue({
   methods: {
     addNewTodo: function () {
 
-      axios.post('http://172.17.24.52/onecall/number', {
+      axios.get('http://172.17.24.52/onecall/number/add', {
         num: this.newToDoText
       })
     .then(function (response) {
@@ -49,13 +49,16 @@ var app = new Vue({
 
     },
     deleteNumber: function (num) {
-      axios.delete('http://172.17.24.52/onecall/number', {
-        "num" : num })
-      .then(function (response) {
+      axios.get('http://172.17.24.52/onecall/number/delete', {
+      params: {
+        num: num
+      }
+    })
+    .then(function (response) {
 
-      })
-      .catch(function (error) {
-        alert('axios error');
+    })
+    .catch(function (error) {
+      alert('axios error');
       });
     },
     loadNumbers: function() {
