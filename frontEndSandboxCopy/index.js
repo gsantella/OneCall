@@ -11,7 +11,7 @@ var app = new Vue({
   el: '#todo-list-example',
   data: {
     newTodoText: '',
-    numbers: [{id: 0, title:'hello'}],
+    numbers: '',
     nextTodoId: 0
   },
   methods: {
@@ -64,7 +64,6 @@ var app = new Vue({
       .then(function (response) {
       app.$data.numbers = response.data.numbers;
       app.$data.nextTodoId = response.data.numbers.length + 1;
-      alert('loaded numbers');
       })
       .catch(function (error) {
       alert('axios error');
