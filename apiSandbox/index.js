@@ -32,7 +32,9 @@ oneCallRouter.get('/send/:id', function(req, res) {
 // Numbers
 oneCallRouter.post('/number', function(req, res) {
 
-  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-add-num.sh', ['55555'], (error, stdout, stderr) => {
+  var num = req.body.num;
+
+  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-add-num.sh', [num], (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
@@ -44,7 +46,9 @@ oneCallRouter.post('/number', function(req, res) {
 
 oneCallRouter.delete('/number', function(req, res) {
 
-  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-del-num.sh', ['55555'], (error, stdout, stderr) => {
+  var num = req.body.num;
+
+  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-del-num.sh', [num], (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
