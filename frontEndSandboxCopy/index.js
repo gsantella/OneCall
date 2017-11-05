@@ -35,7 +35,7 @@ var app = new Vue({
       })
     .then(function (response) {
       alert(response);
-      app.$data.numbers[0] = response;
+      app.$data.numbers = response;
     })
     .catch(function (error) {
       alert('axios error');
@@ -48,7 +48,7 @@ var app = new Vue({
     },
     makeCall: function() {
       alert('one call sent');
-      axios.get('http://172.17.24.52/onecall/1')
+      axios.get('http://172.17.24.52/onecall/send/1')
     .then(function (response) {
       // say one call sent
     })
