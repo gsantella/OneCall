@@ -46,11 +46,13 @@ oneCallRouter.get('/number', function(req, res) {
 
   var counter = 1;
   lineReader.eachLine('/app/OneCall/config/numbers.txt', function(line, last) {
-    console.log(line);
+    console.log('line: ' + line);
     var number = {};
     number.id = counter++;
     number.title = line;
+    console.log('number-title: ' + number.title);
     output.numbers.push(number);
+    console.log('output.numbers: ' + output.numbers);
   });
 
   return res.json(output);
