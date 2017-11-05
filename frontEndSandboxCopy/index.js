@@ -48,12 +48,12 @@ var app = new Vue({
         console.log(app.$data.numbers[0]);
 
     },
-    deleteNumber: function (title) {
+    deleteNumber: function (num) {
       var number = {};
-      number.title = title;
-      axios.delete('http://172.17.24.52/onecall/number', number)
+      number.num = num;
+      axios.delete('http://172.17.24.52/onecall/number', number.)
       .then(function (response) {
-        
+
       })
       .catch(function (error) {
         alert('axios error');
