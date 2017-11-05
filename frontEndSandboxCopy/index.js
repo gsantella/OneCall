@@ -17,9 +17,7 @@ var app = new Vue({
   methods: {
     addNewTodo: function () {
 
-      axios.get('http://172.17.24.52/onecall/number/add', {
-        num: this.newToDoText
-      })
+      axios.get('http://172.17.24.52/onecall/number/add/' + this.newTodoText)
     .then(function (response) {
       alert(response);
       app.$data.numbers = response;
@@ -49,11 +47,7 @@ var app = new Vue({
 
     },
     deleteNumber: function (num) {
-      axios.get('http://172.17.24.52/onecall/number/delete', {
-      params: {
-        num: num
-      }
-    })
+      axios.get('http://172.17.24.52/onecall/number/delete/' + num)
     .then(function (response) {
 
     })
@@ -76,4 +70,4 @@ var app = new Vue({
 
 
 
-app.loadNumbers();
+//app.loadNumbers();
