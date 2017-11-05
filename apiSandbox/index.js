@@ -66,11 +66,12 @@ oneCallRouter.get('/number', function(req, res) {
 
 });
 
-oneCallRouter.post('/number', function(req, res) {
+oneCallRouter.get('/number/add/:num', function(req, res) {
   //res.setHeader('Access-Control-Allow-Origin', '*');
   //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
-  var num = req.body.num;
+  //var num = req.body.num;
+  var num = req.params.num;
 
   const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-add-num.sh', [num], (error, stdout, stderr) => {
     if (error) {
@@ -82,11 +83,12 @@ oneCallRouter.post('/number', function(req, res) {
 
 });
 
-oneCallRouter.delete('/number', function(req, res) {
+oneCallRouter.get('/number/delete/:num', function(req, res) {
   //res.setHeader('Access-Control-Allow-Origin', '*');
   //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
-  var num = req.body.num;
+  //var num = req.body.num;
+  var num = req.params.num;
 
   const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-del-num.sh', [num], (error, stdout, stderr) => {
     if (error) {
