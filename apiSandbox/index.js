@@ -2,9 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var childProcess = require('child_process');
 var lineReader = require('line-reader');
+var cors = require('cors');
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
+app.use(cors());
 
 module.exports = app;
 
@@ -14,15 +16,15 @@ var oneCallRouter = express.Router();
 // OneCalls
 // A GET to the root of a resource returns a list of that resource
 oneCallRouter.get('/send', function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
   return res.json({ msg: ['OneCall Send List'] });
 });
 
 // A GET to the root of a resource returns that resource
 oneCallRouter.get('/send/:id', function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
   const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call.sh', [''], (error, stdout, stderr) => {
     if (error) {
       throw error;
@@ -35,8 +37,8 @@ oneCallRouter.get('/send/:id', function(req, res) {
 
 // Numbers
 oneCallRouter.get('/number', function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
   var output = {};
     //{ "id": "4", "title": "1111111111" },
@@ -65,8 +67,8 @@ oneCallRouter.get('/number', function(req, res) {
 });
 
 oneCallRouter.post('/number', function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
   var num = req.body.num;
 
@@ -81,8 +83,8 @@ oneCallRouter.post('/number', function(req, res) {
 });
 
 oneCallRouter.delete('/number', function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
   var num = req.body.num;
 
@@ -98,15 +100,15 @@ oneCallRouter.delete('/number', function(req, res) {
 
 // Messages
 oneCallRouter.get('/message', function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
   return res.json({ msg: ['OneCall Message List'] });
 });
 
 oneCallRouter.get('/message/:id', function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
   return res.json({ msg: ['OneCall Message' + req.params.id] });
 });
