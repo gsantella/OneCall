@@ -36,7 +36,7 @@ oneCallRouter.get('/number', function(req, res) {
 
   var output = { numbers: [] };
 
-  lineReader.eachLine('/app/OneCall/config/numbers.txt', function(line) {
+  lineReader.eachLine('/app/OneCall/config/numbers.txt', function(line, last) {
     output.numbers.push({ "id": "1", "title": "1111111111" })
   });
 
