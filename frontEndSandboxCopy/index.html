@@ -21,20 +21,13 @@
       </div>
 
       <div class="container">
-
-          <!--<div class="phoneList">
-            <ul class="collection list">
-              <li v-for="item in numbers" class="collection-item"><div><button v-on:click="deleteNumber" class="waves-effect waves-light btn">X</button><span class="secondary-content">{{item.number}}</span></div></li>
-            </ul>
-          </div> -->
-
-
           <div id="todo-list-example">
+            <div class="addNumber">
             <input
               v-model="newTodoText"
               v-on:keyup.enter="addNewTodo"
-              placeholder="Add a todo"
-            >
+              placeholder="Add a number"
+            ></div>
             <div class="phoneList">
               <ul class="colectionlist">
                 <li class="collection-item"
@@ -55,11 +48,11 @@
 
         <button  v-on:click="makeCall" class="waves-effect waves-light btn bottomBtn leftBtn">Call all</button>
 
-        <button  v-on:click="addNumber" class="waves-effect waves-light btn bottomBtn rightBtn">Add a number</button>
+        <button  v-on:click="loadNumbers" class="waves-effect waves-light btn bottomBtn rightBtn">Add a number</button>
 
       </div>
 
-      </div>
+    </div>
 
     </div>
 
