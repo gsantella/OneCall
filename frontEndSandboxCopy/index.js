@@ -49,11 +49,11 @@ var app = new Vue({
 
     },
     deleteNumber: function (title) {
-      axios.delete('http://172.17.24.52/onecall/number', {
-        num: title
-      })
+      var number = {};
+      number.title = title;
+      axios.delete('http://172.17.24.52/onecall/number', number)
       .then(function (response) {
-        alert(response);
+        
       })
       .catch(function (error) {
         alert('axios error');
