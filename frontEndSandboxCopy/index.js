@@ -19,12 +19,13 @@ var app = new Vue({
 
       axios.get('http://172.17.24.52/onecall/number/add/' + this.newTodoText)
       .then(function (response) {
-        app.loadNumbers();
-        this.newTodoText = '';
+
       })
       .catch(function (error) {
         alert('axios error');
-      });
+
+      app.loadNumbers();
+      this.newTodoText = '';
     },
     makeCall: function() {
       alert('one call sent');
