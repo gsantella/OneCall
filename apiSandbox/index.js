@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var childProcess = require('child_process');
+var lineReader = require('line-reader');
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
@@ -31,11 +32,15 @@ oneCallRouter.get('/send/:id', function(req, res) {
 
 // Numbers
 oneCallRouter.get('/number', function(req, res) {
-  return res.json({ numbers: [
-    { id: 1, title: 8149379223 },
-    { id: 2, title: 7247714542 },
-    { id: 3, title: 8144215265 }  ]
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  var output = { numbers: [] };
+
+  lineReader.eachLine('/app/OneCall/config/numbers.txt', function(line, last) {
+    output.numbers.push({ "id": "1", "title": "1111111111" })
   });
+
+  return res.json(output);
 });
 
 oneCallRouter.post('/number', function(req, res) {
