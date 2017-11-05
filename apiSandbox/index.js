@@ -30,6 +30,14 @@ oneCallRouter.get('/send/:id', function(req, res) {
 });
 
 // Numbers
+oneCallRouter.get('/number', function(req, res) {
+  return res.json({ numbers: [
+    { id: 1, title: 12345 },
+    { id: 2, title: 54321 },
+    { id: 3, title: 00000 }  ]
+  });
+});
+
 oneCallRouter.post('/number', function(req, res) {
 
   var num = req.body.num;
