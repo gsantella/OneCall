@@ -37,19 +37,19 @@ oneCallRouter.post('/number', function(req, res) {
       throw error;
     }
     console.log(stdout);
-    return res.json({ msg: ['OneCall Number Added ' + req.body.num], 'result': stdout });
+    return res.json({ msg: ['OneCall Number Added '], 'result': stdout });
   });
 
 });
 
 oneCallRouter.delete('/number', function(req, res) {
 
-  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-del-num.sh', '12345', (error, stdout, stderr) => {
+  const child = childProcess.execFile('/app/OneCall/scriptsSandbox/call-del-num.sh', ['12345'], (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
     console.log(stdout);
-    return res.json({ msg: ['OneCall Number Delete ' + req.body.num], 'result': stdout });
+    return res.json({ msg: ['OneCall Number Delete '], 'result': stdout });
   });
 
 });
