@@ -19,7 +19,7 @@ var app = new Vue({
 
       axios.get('http://172.17.24.52/onecall/number/add/' + this.newTodoText)
       .then(function (response) {
-        loadNumbers();
+        app.loadNumbers();
       })
       .catch(function (error) {
         alert('axios error');
