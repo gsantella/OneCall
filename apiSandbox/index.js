@@ -50,9 +50,10 @@ oneCallRouter.get('/number', function(req, res) {
 
   lineReader.eachLine('/app/OneCall/config/numbers.txt', function(line, last) {
 
-    number.id = counter++;
+    number.id = counter;
     number.title = line;
     output.numbers.push(number);
+    counter += 1;
 
     if (last) {
       return res.json(output);
