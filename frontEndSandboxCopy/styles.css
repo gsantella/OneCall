@@ -29,24 +29,37 @@ ul {
 }
 
 .bottomBtn {
-  margin-top: 20px;
-  width: 250px;
+  margin-top:5;
+  width: 100%;
+  height: 70px;
 }
 
-.rightBtn {
-  float: right;
+li {
+  font-size: 2em;
+  border-top: 2px dashed gray;
 }
 
-.search, .addNumber {
+.secondary-content {
+  margin-top: -5px;
+}
+
+.search {
   margin: 0px auto;
-  margin-top: 35px;
+  margin-top: 25px;
   width: 250px;
 }
 
 .addNumber {
-  margin-top: 0;
+  margin: 0px auto;
+  margin-top: 25px;
+  margin-bottom: -15px;
+  width: 250px;
 }
 
 .collection-item {
   margin: 5px;
+}
+
+.deleteBtn {
+  background-color: red;
 }

@@ -1,20 +1,54 @@
 Vue.component('todo-item', {
   template: '\
     <li>\
-    <button class="waves-effect waves-light btn" v-on:click="$emit(\'remove\')">X</button>\
-      <span class="secondary-content">{{ title }}</span>\
+    <button class="waves-effect waves-light btn deleteBtn" v-on:click="$emit(\'remove\')">X</button>\
+      <span class="secondary-content">{{ formattedNumber }}</span>\
     </li>\
   ',
-  props: ['title']
+  props: ['title'],
+  computed: {
+    formattedNumber: function() {
+      var areaCode = this.title.substring(0, 3);
+      var prefix = this.title.substring(3, 6);
+      var lineNumber = this.title.substring(6, 10);
+      return areaCode + '-' + prefix + '-' + lineNumber ;
+    }
+  }
 })
 var app = new Vue({
   el: '#todo-list-example',
   data: {
     newTodoText: '',
-    numbers: '',
+    newTodoTextToDisplay: '',
+    numbers: [
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'},
+      {title: '8785557723'}
+    ],
     nextTodoId: 0
   },
   methods: {
+
+    addDashes: function (title) {
+      var str = title;
+      str.substring(3,'-');
+      return str;
+    },
+
     addNewTodo: function () {
 
       axios.get('http://172.17.24.52/onecall/number/add/' + this.newTodoText)
@@ -64,7 +98,4 @@ var app = new Vue({
     }
   }
 })
-
-
-
-app.loadNumbers();
+//app.loadNumbers();

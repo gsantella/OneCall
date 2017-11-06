@@ -22,12 +22,16 @@
 
       <div class="container">
           <div id="todo-list-example">
-            <div class="addNumber">
-            <input
+            <!--<div class="addNumber">
+            <input type="tel" minlenth=10 maxlength=10 class="validiate"
               v-model="newTodoText"
               v-on:keyup.enter="addNewTodo"
               placeholder="Add a number"
-            ></div>
+            ></div>-->
+            <div class="input-field addNumber">
+              <input value="" type="text" class="validate" minlength="10" maxlength="10">
+              <label class="active">Add a number</label>
+            </div>
             <div class="phoneList">
               <ul class="colectionlist">
                 <li class="collection-item"
@@ -42,13 +46,11 @@
 
 
           <div class="input-field search">
-            <input value="" id="numberToSearch" type="text" class="validate">
-            <label class="active" for="numberToSearch">Search for a number</label>
+            <input value="" type="text" class="validate" minlength="10" maxlength="10">
+            <label class="active">Search for a number</label>
           </div>
 
-        <button  v-on:click="makeCall" class="waves-effect waves-light btn bottomBtn leftBtn">Call all</button>
-
-        <button  v-on:click="loadNumbers" class="waves-effect waves-light btn bottomBtn rightBtn">Add a number</button>
+        <button  v-on:click="makeCall" class="waves-effect waves-light btn bottomBtn">Call all</button>
 
       </div>
 
